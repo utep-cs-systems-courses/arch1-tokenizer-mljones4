@@ -20,9 +20,10 @@ int main()
 
 	  return 0;
 	}
-      /*
+      
       printf("%s", input);
       printf("%d\n", count_words(input));
+      /*
       printf("%d\n", word_start(input));
       printf("%c\n", *word_start(input));
       printf("%d\n", word_terminator(input));
@@ -31,8 +32,8 @@ int main()
       printf("%c\n", *word_terminator(input+4));
       */
       char** tokens = tokenize(input);
+      print_tokens(tokens);
       //print_tokens(tokens);
-      //print_tokens(tokens);
-      free_tokens(tokens);
+      //free_tokens(tokens);
     }
 }

@@ -5,7 +5,7 @@
 
 int space_char(char c)
 {
-  if((c == ' ' || c == '\t') && c != '\0')
+  if((c == ' ' || c == '\t') && c != '\0') //returns 1 if there is a space and not a zero term
     {
       return 1;
     }
@@ -15,7 +15,7 @@ int space_char(char c)
 
 int non_space_char(char c)
 {
-  if((c != ' ' && c != '\t') && c != '\0')
+  if((c != ' ' && c != '\t') && c != '\0') //returns 1 if there is not a space and not a zero term
 
     {
       return 1;
@@ -28,15 +28,15 @@ char *word_start(char *str)
 {
   char *temp = str;
   
-  if(*temp == '\0')
+  if(*temp == '\0')//if on the zero term, don't continue
     {
       temp = 0;
-    }else if (non_space_char(*temp))
+    }else if (non_space_char(*temp))//if already on a non-space character, exit
     {
       return temp;
     }
       
-  while(space_char(*temp) || *temp=='\n')
+  while(space_char(*temp) || *temp=='\n')// keep traversing spaces until reaching non-space char
     {
       temp++;
     }
@@ -48,7 +48,7 @@ char *word_terminator(char *word)
 {
   char *temp = word;
 
-  while(non_space_char(*temp) && *temp!='\n')
+  while(non_space_char(*temp) && *temp!='\n')//traverse non-space characters until space char
     {
       temp++;
     }
@@ -62,21 +62,21 @@ int count_words(char *str)
   char *temp = str;
   int wcount = 0;
 
-  while(space_char(*temp))
+  while(space_char(*temp))//traverse spaces in beginning of string
     {
       temp++;
     }
   
-  while(*temp && *temp!='\n')
+  while(*temp && *temp!='\n')//keep going until the end of the string
     {
-      wcount++;
+      wcount++;//increment word count
 
-      while(non_space_char(*temp))
+      while(non_space_char(*temp))//traverse non-space characters
 	{
 	  temp++;
 	}
 
-      while(space_char(*temp))
+      while(space_char(*temp))//traverse space characters
 	{
 	  temp++;
 	}
@@ -117,7 +117,7 @@ char **tokenize(char* str)
       *(tokens + i) = copy_str(temp, tempEnd-temp);
       
       temp = word_start(tempEnd);
-      printf("this is word #%d: %s\n", (i + 1), *(tokens+i));
+      //printf("this is word #%d: %s\n", (i + 1), *(tokens+i));
     }
 
   //*(tokens + i) = (char *)malloc(sizeof(char));
@@ -132,20 +132,20 @@ void print_tokens(char **tokens)
 
   while(*(tokens + i) != 0)
     {
-      printf("%s", *(tokens + i));
-           printf("%zu\n", strlen(*(tokens + i)));
+      printf("%s\n", *(tokens + i));
+      // printf("%zu\n", strlen(*(tokens + i)));
       i++;
     }
 
   //printf("%d", **(tokens + i));
-  // printf("%zu\n", strlen(*(tokens + i)));
+  //printf("%zu\n", strlen(*(tokens + i)));
 }
 
 void free_tokens(char **tokens)
 {
   char** temp = tokens;
   int i = 0;
-  //  puts("Hello\n");
+  //puts("Hello\n");
   
   printf("%d\n", tokens[0]);
   printf("%s\n", tokens[0]);
@@ -167,7 +167,7 @@ void free_tokens(char **tokens)
       i++;
     }
 */
-  //  free(*(tokens+i));
+  //free(*(tokens+i));
   free(tokens);
 
 }
