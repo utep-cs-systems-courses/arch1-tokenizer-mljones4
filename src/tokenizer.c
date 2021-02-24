@@ -105,7 +105,7 @@ char **tokenize(char* str)
 
   char *temp = word_start(str);
   char *tempEnd;
-  char **tokens = (char **)malloc(len);
+  char **tokens = (char **)malloc(sizeof(char *)*len);
   
   int i = 0;
   
@@ -145,19 +145,8 @@ void free_tokens(char **tokens)
 {
   char** temp = tokens;
   int i = 0;
-  //puts("Hello\n");
   
-  printf("%d\n", tokens[0]);
-  printf("%s\n", tokens[0]);
-  free(*(tokens+i));
-  printf("%d\n", tokens[1]);
-  printf("%s\n", tokens[1]);
-  free(tokens[1]);
-  printf("%d\n", tokens[2]);
-  printf("%s\n", tokens[2]);
-  free(tokens[2]);
-/*  
-  while(*(tokens+i)!='\0')
+  while(*(tokens+i))
     {
       puts("We are inside free tokens while loop.\n");
       printf("%d\n", tokens[i]);
@@ -166,7 +155,7 @@ void free_tokens(char **tokens)
 
       i++;
     }
-*/
+  
   //free(*(tokens+i));
   free(tokens);
 

@@ -34,6 +34,6 @@ int main()
       char** tokens = tokenize(input);
       print_tokens(tokens);
       //print_tokens(tokens);
-      //free_tokens(tokens);
+      free_tokens(tokens);
     }
 }
