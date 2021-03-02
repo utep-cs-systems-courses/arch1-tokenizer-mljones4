@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <string.h>
 #include <stdlib.h>
 #include "tokenizer.h"
 #include "history.h"
@@ -17,23 +16,29 @@ int main()
 
       fgets(input, MAX_LIMIT, stdin);
 
-      if(strcmp(input, "q\n") == 0)
+      if(input[0] == 'q')
 	{
-	  free_history(userStrings);
+	  if(input[1] == '\n')
+	    {
+	      free_history(userStrings);
 	  
-	  puts("Goodbye");
+	      puts("Goodbye");
 
-	  return 0;
+              return 0;
+	    }
 	  
-	}else if(strcmp(input, "p\n") == 0)
+	}else if(input[0] == 'p')
 	{
-	  print_history(userStrings);
-
-	  continue;
+	  if(input[1] == '\n')
+	    {
+	      print_history(userStrings);
+	      
+	      continue;
+	    }
 	  
 	}else if(input[0] == '!')
 	{
-	  printf("%s", get_history(userStrings, atoi(input+1)));
+	  printf("%s\n", get_history(userStrings, atoi(input+1)));
 
 	  continue;
 	}
