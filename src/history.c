@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <string.h>
 #include <stdlib.h>
 #include "history.h"
 
@@ -17,9 +16,23 @@ List* init_history()
 void add_history(List *list, char *str)
 {
   Item *node = (Item *) malloc(sizeof(Item));
-  node->str = (char *) malloc(sizeof(char) * strlen(str));
-  
-  strcpy(node->str, str);//copy parameter str into the str of the node
+
+  //get length of str
+  int i = 0;
+  for(; str[i]!='\0'; i++)
+    {
+    }
+
+  node->str = (char *) malloc(sizeof(char) * (i+1));
+
+  //copy parameter str into the str of the node
+  i=0;
+  for(; str[i]!='\0'; i++)
+    {
+      node->str[i] = str[i];
+    }
+
+  node->str[i+1] = '\0';
 
   //change the head of the list to be the new node
   node->next = list->root;
